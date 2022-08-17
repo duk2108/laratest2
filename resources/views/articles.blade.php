@@ -10,15 +10,15 @@
 <body>
 <div class="wrapper">
     <main class="main-content222">
-        @if ($message = Session::get('success'))
+        @if ($message = session('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>
         @endif
-            <h2 class="heading">Статьи</h2>
+            <h2 class="heading">{{  __('site.articles') }}</h2>
             @foreach ($articles as $article)
             <div class="profile22">
-                <h2>{{ $article['text'] }} </h2> <a href="/article/delete/{{ $article['id'] }}">Удалить</a><br><br>
+                <h2>{{ $article['text'] }} </h2> <a href="{{ route('article.delete', $article['id']) }}">{{  Config::get('constants.delete') }} и {{  __('site.delete') }}</a><br><br>
                 @foreach ($article['users'] as $user)
                     {{ $user['name'] }} <br>
                 @endforeach

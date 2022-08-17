@@ -14,14 +14,7 @@ class ArticleController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(){
-        $articles = array();
-        foreach (
-            Article::with(['users'])
-                ->lazyById(200)
-            as $article) {
-            $row = $article->toArray();
-            $articles[] = $row;
-        }
+        $articles = Article::articleList();
         return view('articles', compact('articles'));
     }
 
@@ -36,7 +29,7 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $article->delete();
         ArticleUser::where('article_id', $id)->delete();
-        return redirect()->route('article.index')->with('success','Статья успешно удалена');
+        return redirect()->route('article.index')->with('success',__('site.articleDelSuccess'));
     }
 
 

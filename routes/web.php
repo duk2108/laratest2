@@ -25,7 +25,7 @@ Route::post('/user', [UserController::class, 'showUser'])->name('user.added');
 Route::get('/user/showexp', [UserController::class, 'showExp'])->name('user.showexp');
 Route::get('/user/changeexp', [UserController::class, 'changeExp'])->name('user.changeexp');
 
-Route::get('/user/avatar/{id}', [UserController::class, 'showAvatar']);
+Route::get('/user/avatar/{id}', [UserController::class, 'showAvatar'])->name('user.avatar');
 Route::get('/user/authortest/{id}', [UserController::class, 'authorTest']);
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');

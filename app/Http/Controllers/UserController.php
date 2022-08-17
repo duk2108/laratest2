@@ -72,7 +72,7 @@ class UserController extends Controller
     public static function changeExp()
     {
         $user = User::find(1);
-        $user->experience = rand(1,9999);
+        $user->experience = rand(1, 9999);
         $user->save();
     }
 
